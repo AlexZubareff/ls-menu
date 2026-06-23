@@ -1,0 +1,28 @@
+[
+  { "category": "🍷 Вино", "name": "Château Margaux", "composition": "Бордо, красное сухое, 2015, Франция", "status": "platinum" },
+  { "category": "🍷 Вино", "name": "Dom Pérignon", "composition": "Шампанское, брют, винтаж 2012, Франция", "status": "gold" },
+  { "category": "🍷 Вино", "name": "Cloudy Bay", "composition": "Совиньон Блан, белое сухое, Новая Зеландия", "status": "gold" },
+  { "category": "🍷 Вино", "name": "Sassicaia", "composition": "Тоскана, красное сухое, 2018, Италия", "status": "silver" },
+  { "category": "🍷 Вино", "name": "Gavi di Gavi", "composition": "Кортезе, белое сухое, Пьемонт, Италия", "status": "silver" },
+  { "category": "🍷 Вино", "name": "Chianti Classico", "composition": "Санджовезе, красное сухое, Тоскана, Италия", "status": "club" },
+
+  { "category": "🥃 Водка", "name": "Belvedere", "composition": "Рожь, Польша, фильтрация 4x", "status": "gold" },
+  { "category": "🥃 Водка", "name": "Grey Goose", "composition": "Пшеница, Франция, дистилляция 5x", "status": "gold" },
+  { "category": "🥃 Водка", "name": "Absolut Elyx", "composition": "Шведская пшеница, медная дистилляция", "status": "silver" },
+  { "category": "🥃 Водка", "name": "Ketel One", "composition": "Пшеница, Голландия, медные кубы", "status": "silver" },
+  { "category": "🥃 Водка", "name": "Finlandia", "composition": "Ячмень, ледниковая фильтрация, Финляндия", "status": "club" },
+
+  { "category": "🥃 Виски", "name": "Macallan 18", "composition": "Односолодовый, 18 лет, хересные бочки", "status": "platinum" },
+  { "category": "🥃 Виски", "name": "Lagavulin 16", "composition": "Торфяной, дымный, 16 лет, Айлей", "status": "gold" },
+  { "category": "🥃 Виски", "name": "Yamazaki 12", "composition": "Японский односолодовый, 12 лет", "status": "gold" },
+  { "category": "🥃 Виски", "name": "Jameson", "composition": "Ирландский, тройная дистилляция", "status": "silver" },
+  { "category": "🥃 Виски", "name": "Jack Daniel's", "composition": "Теннесси, угольная фильтрация", "status": "silver" },
+  { "category": "🥃 Виски", "name": "Bulleit Rye", "composition": "Американский ржаной, пряный, ваниль", "status": "club" },
+  { "category": "🥃 Виски", "name": "Johnnie Walker Black", "composition": "Купажированный, 12 лет, дымный", "status": "club" },
+
+  { "category": "🧃 Соки и безалкогольные", "name": "Свежевыжатый апельсин", "composition": "Апельсин, морковь, имбирь", "status": "club" },
+  { "category": "🧃 Соки и безалкогольные", "name": "Green Detox", "composition": "Яблоко, сельдерей, шпинат, лайм", "status": "club" },
+  { "category": "🧃 Соки и безалкогольные", "name": "Berry Blast", "composition": "Клюква, малина, черника, мята", "status": "silver" },
+  { "category": "🧃 Соки и безалкогольные", "name": "Тропик микс", "composition": "Манго, ананас, кокосовое молоко", "status": "silver" },
+  { "category": "🧃 Соки и безалкогольные", "name": "Sparkling Lemonade", "composition": "Лимон, лайм, содовая, тростниковый сахар", "status": "gold" }
+]

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0a12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Liga Stavok Dom Sporta — Меню</title>
+<style>
+:root {
+  --bg-page: oklch(0.114 0.008 280);
+  --bg-card: oklch(0.16 0.01 280);
+  --bg-elevated: oklch(0.2 0.012 280);
+  --text-primary: oklch(0.88 0.008 280);
+  --text-secondary: oklch(0.55 0.012 280);
+  --text-muted: oklch(0.4 0.01 280);
+  --border-subtle: oklch(0.22 0.01 280);
+  --border-card: oklch(0.25 0.012 280);
+  --accent: oklch(0.75 0.18 160);
+  --radius: 12px;
+  --radius-pill: 9999px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { color-scheme: dark; -webkit-tap-highlight-color: transparent; }
+html, body {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  touch-action: manipulation;
+  overscroll-behavior: none;
+  font-family: var(--font);
+  background: var(--bg-page);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: linear-gradient(180deg, oklch(0.114 0.008 280) 60%, transparent);
+  padding: calc(12px + var(--safe-top)) 16px 10px;
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.header-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+.header-sub-title {
+  font-size: 0.65rem;
+  color: var(--accent);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+.header-actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.header-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: background 0.2s var(--ease);
+}
+.header-icon:hover { background: oklch(1 1 1 / 0.05); }
+.header-icon:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.header-sub {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  letter-spacing: 0.04em;
+  padding-left: 2px;
+}
+
+/* Status navigation */
+.nav-status {
+  position: sticky;
+  top: 60px;
+  z-index: 19;
+  display: flex;
+  gap: 6px;
+  padding: 12px 16px 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  background: linear-gradient(180deg, oklch(0.114 0.008 280) 60%, oklch(0.114 0.008 280 / 0.9) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid oklch(1 1 1 / 0.04);
+}
+.nav-status::-webkit-scrollbar { display: none; }
+.status-pill {
+  flex-shrink: 0;
+  min-height: 36px;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid oklch(1 1 1 / 0.08);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  position: relative;
+}
+.status-pill:active { transform: scale(0.96); }
+
+/* Default pill colors by status */
+.status-pill[data-status="all"] {
+  color: var(--text-primary);
+  background: oklch(1 1 1 / 0.06);
+}
+.status-pill[data-status="club"] {
+  color: oklch(0.65 0.15 250);
+  background: oklch(0.65 0.15 250 / 0.12);
+  border-color: oklch(0.65 0.15 250 / 0.2);
+}
+.status-pill[data-status="silver"] {
+  color: oklch(0.72 0.02 280);
+  background: oklch(0.7 0.02 280 / 0.1);
+  border-color: oklch(0.7 0.02 280 / 0.18);
+}
+.status-pill[data-status="gold"] {
+  color: oklch(0.78 0.15 85);
+  background: oklch(0.75 0.15 85 / 0.12);
+  border-color: oklch(0.75 0.15 85 / 0.2);
+}
+.status-pill[data-status="platinum"] {
+  color: oklch(0.92 0.01 280);
+  background: oklch(0.9 0.01 280 / 0.08);
+  border-color: oklch(0.9 0.01 280 / 0.15);
+}
+
+/* Active pill - more saturated */
+.status-pill.active { font-weight: 700; border-color: transparent; }
+.status-pill[data-status="all"].active {
+  background: oklch(1 1 1 / 0.12);
+}
+.status-pill[data-status="club"].active {
+  background: oklch(0.65 0.15 250 / 0.25);
+  box-shadow: 0 0 12px oklch(0.65 0.15 250 / 0.2);
+}
+.status-pill[data-status="silver"].active {
+  background: oklch(0.7 0.02 280 / 0.2);
+}
+.status-pill[data-status="gold"].active {
+  background: oklch(0.75 0.15 85 / 0.25);
+  box-shadow: 0 0 12px oklch(0.75 0.15 85 / 0.2);
+}
+.status-pill[data-status="platinum"].active {
+  background: oklch(0.9 0.01 280 / 0.15);
+}
+
+.status-pill.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+/* Category header */
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px 6px;
+}
+.category-header h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.category-count {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  letter-spacing: 0.03em;
+  margin-left: auto;
+}
+
+/* Table — mobile-first */
+.menu-table-wrap {
+  padding: 0 16px;
+}
+.menu-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  display: block;
+}
+.menu-table tbody {
+  display: block;
+}
+.menu-table tr {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 0;
+  border-bottom: 1px solid oklch(1 1 1 / 0.03);
+  min-height: 44px;
+}
+.menu-table tr:last-child { border-bottom: none; }
+
+.col-name {
+  font-weight: 500;
+  color: var(--text-primary);
+  flex: 0 0 130px;
+  word-break: break-word;
+  hyphens: auto;
+}
+.col-composition {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  flex: 1 1 auto;
+  min-width: 0;
+  word-break: break-word;
+  hyphens: auto;
+}
+.col-badge {
+  flex: 0 0 88px;
+}
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.badge-club { background: oklch(0.65 0.15 250 / 0.15); color: oklch(0.65 0.15 250); }
+.badge-silver { background: oklch(0.7 0.02 280 / 0.15); color: oklch(0.7 0.02 280); }
+.badge-gold { background: oklch(0.75 0.15 85 / 0.15); color: oklch(0.75 0.15 85); }
+.badge-platinum { background: oklch(0.9 0.01 280 / 0.12); color: oklch(0.9 0.01 280); }
+
+/* On narrow screens: stack vertically */
+@media (max-width: 360px) {
+  .menu-table tr {
+    flex-wrap: wrap;
+    gap: 2px 8px;
+    padding: 10px 0;
+  }
+  .col-name {
+    flex: 0 0 110px;
+  }
+  .col-composition {
+    flex-basis: 100%;
+    white-space: normal;
+    padding-left: 0;
+  }
+  .col-badge {
+    flex: 0 0 80px;
+  }
+  .nav-status {
+    padding: 10px 12px;
+    top: 52px;
+  }
+  .status-pill {
+    padding: 7px 14px;
+    font-size: 0.74rem;
+    min-height: 34px;
+  }
+  .category-header {
+    padding: 16px 12px 4px;
+  }
+  .menu-table-wrap {
+    padding: 0 12px;
+  }
+  .header {
+    padding: calc(10px + var(--safe-top)) 12px 8px;
+  }
+}
+
+/* Bottom bar */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 16px calc(16px + var(--safe-bottom));
+  background: linear-gradient(0deg, oklch(0.114 0.008 280) 55%, transparent);
+  z-index: 20;
+  pointer-events: none;
+}
+.bottom-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: oklch(0.18 0.01 280);
+  border: 1px solid var(--border-subtle);
+  pointer-events: auto;
+}
+.bottom-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  flex: 1;
+}
+.bottom-info strong { font-size: 0.8rem; font-weight: 600; }
+.bottom-info small {
+  font-size: 0.62rem;
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bottom-action {
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: oklch(0.1 0.01 280);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  flex-shrink: 0;
+}
+.bottom-action:active { transform: scale(0.96); }
+.bottom-action:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+
+@media (hover: hover) {
+  .bottom-action:hover { filter: brightness(1.1); transform: scale(1.02); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-top">
+    <div class="header-brand">
+      <div class="header-title">Дом Спорта</div>
+      <div class="header-sub-title">МЕНЮ</div>
+    </div>
+    <div class="header-actions">
+      <button class="header-icon" aria-label="Меню" type="button">≡</button>
+    </div>
+  </div>
+  <div class="header-sub">Барное меню &bull; Напитки</div>
+</header>
+
+<nav class="nav-status" aria-label="Фильтр по статусу">
+  <button class="status-pill active" data-status="all" aria-pressed="true">All</button>
+  <button class="status-pill" data-status="club" aria-pressed="false">Club</button>
+  <button class="status-pill" data-status="silver" aria-pressed="false">Silver</button>
+  <button class="status-pill" data-status="gold" aria-pressed="false">Gold</button>
+  <button class="status-pill" data-status="platinum" aria-pressed="false">Platinum</button>
+</nav>
+
+<div id="menu-content"></div>
+
+<div class="bottom-bar">
+  <div class="bottom-bar-inner">
+    <div class="bottom-info">
+      <strong>Выбрано: 0</strong>
+      <small>Нажмите на напиток для выбора</small>
+    </div>
+    <button class="bottom-action" aria-label="Оформить заказ">Заказать</button>
+  </div>
+</div>
+
+<div style="height: 100px"></div>
+
+<script>
+(function() {
+  const DATA_URL = 'data/drinks.json';
+  const pills = document.querySelectorAll('.status-pill');
+  const content = document.getElementById('menu-content');
+  let allDrinks = [];
+
+  function statusClass(s) {
+    return 'badge-' + s;
+  }
+
+  function statusLabel(s) {
+    return s.toUpperCase();
+  }
+
+  function render(filterStatus) {
+    // Group by category
+    const groups = {};
+    allDrinks.forEach(d => {
+      if (filterStatus !== 'all' && d.status !== filterStatus) return;
+      if (!groups[d.category]) groups[d.category] = [];
+      groups[d.category].push(d);
+    });
+
+    const keys = Object.keys(groups);
+    if (keys.length === 0) {
+      content.innerHTML = '<div style="text-align:center;padding:48px 16px;color:var(--text-secondary);font-size:0.85rem">Нет напитков с таким статусом</div>';
+      return;
+    }
+
+    let html = '';
+    keys.forEach(cat => {
+      const items = groups[cat];
+      html += '<div class="category-header">';
+      html += '<h2>' + cat + '</h2>';
+      html += '<span class="category-count">' + items.length + '</span>';
+      html += '</div>';
+      html += '<div class="menu-table-wrap">';
+      html += '<table class="menu-table"><tbody>';
+      items.forEach(d => {
+        html += '<tr>';
+        html += '<td class="col-name">' + d.name + '</td>';
+        html += '<td class="col-composition">' + d.composition + '</td>';
+        html += '<td class="col-badge"><span class="badge ' + statusClass(d.status) + '">' + statusLabel(d.status) + '</span></td>';
+        html += '</tr>';
+      });
+      html += '</tbody></table></div>';
+    });
+
+    content.innerHTML = html;
+  }
+
+  function filter(status) {
+    pills.forEach(p => {
+      const isActive = p.dataset.status === status;
+      p.classList.toggle('active', isActive);
+      p.setAttribute('aria-pressed', isActive);
+    });
+    render(status);
+  }
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', function() {
+      filter(this.dataset.status);
+    });
+  });
+
+  fetch(DATA_URL)
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(data => {
+      allDrinks = data;
+      render('all');
+    })
+    .catch(err => {
+      content.innerHTML = '<div style="text-align:center;padding:48px 16px;color:var(--text-secondary);font-size:0.85rem">Ошибка загрузки меню</div>';
+    });
+})();
+</script>
+
+</body>
+</html>
